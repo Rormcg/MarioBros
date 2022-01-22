@@ -16,32 +16,40 @@ public class Main extends JComponent implements ActionListener {
    private Timer t;
    
    private Mario mario = new Mario(80, 80);
+   private Background background = new Background();
    
    Main() {
-      frame = new JFrame("Super Mario Bros.");
-      content = frame.getContentPane();
-      content.add(this);
-      content.setBackground(new Color(113, 255, 255));
       setUp();
-      t = new Timer(1, this);
+      
       
    }
    
    private void setUp() {
+      frame = new JFrame("Super Mario Bros.");
+      content = frame.getContentPane();
+      content.add(this);
+      content.setBackground(new Color(113, 255, 255));
+      
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(screenWidth + 17, screenHeight + 40);
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
+      
+      t = new Timer(1, this);
+      t.start();
+      frame.addKeyListener(mario);
    }
    
    
    public void paintComponent(Graphics g) {
-      g.setColor(Color.BLUE);
+      background.draw(g);
       mario.draw(g);
    }
    
    public void actionPerformed(ActionEvent e) {
+      mario.update();
       
+      repaint();
    }
 }
 

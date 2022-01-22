@@ -1,4 +1,4 @@
-
+import java.awt.geom.Point2D;
 
 public class Block {
    private Point2D.Double pos;
