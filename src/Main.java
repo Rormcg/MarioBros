@@ -7,19 +7,25 @@ import java.awt.Graphics;
 import java.awt.Color;
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Main extends JComponent{
+public class Main extends JComponent implements ActionListener {
    private JFrame frame;
    private Container content;
    private int screenWidth = 600, screenHeight = 600;
+   private Timer t;
    
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34f4ff6cc5ed9ef1694a82ce185da5652a6a0825
    Main() {
       frame = new JFrame("Super Mario Bros.");
       content = frame.getContentPane();
       content.add(this);
       content.setBackground(new Color(113, 255, 255));
       setUp();
+      t = new Timer(1, this);
       
    }
    
@@ -33,6 +39,10 @@ public class Main extends JComponent{
    
    public void paintComponent(Graphics g) {
       g.setColor(Color.BLUE);
+   }
+   
+   public void actionPerformed(ActionEvent e) {
+   
    }
 }
 
