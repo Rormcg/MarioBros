@@ -15,6 +15,8 @@ public class Main extends JComponent implements ActionListener {
    private int screenWidth = 600, screenHeight = 600;
    private Timer t;
    
+   private Mario mario = new Mario(80, 80);
+   
    Main() {
       frame = new JFrame("Super Mario Bros.");
       content = frame.getContentPane();
@@ -35,6 +37,7 @@ public class Main extends JComponent implements ActionListener {
    
    public void paintComponent(Graphics g) {
       g.setColor(Color.BLUE);
+      mario.draw(g);
    }
    
    public void actionPerformed(ActionEvent e) {
