@@ -39,19 +39,17 @@ public class Utility {
          "----opooppplppp-",
          "----ooppppllll--",
          "------ppppppp---",
-         "--bbbbbrrbb-----",
-         "ppbbbbbrrrbbbppp",
-         "ppp-bbbryrrrbbpp",
-         "pp--rrrrrrrrr--b",
-         "---rrrrrrrrrrrbb",
-         "---rrrrrrrrrrrbb",
-         "--bbrrrr---rrrbb",
-         "--bbb-----------",
-         "---bbb----------"
+         "--rrrrrbbrr-----",
+         "wwrrrrrbbbrrrwww",
+         "www-rrrbybbbrrww",
+         "ww--bbbbbbbbb--o",
+         "---bbbbbbbbbbboo",
+         "---bbbbbbbbbbboo",
+         "--oobbbb---bbboo",
+         "--ooo-----------",
+         "---ooo----------"
       };
       String[] marioMoving2 = {
-         "----------------",
-         "----------------",
          "------rrrr------",
          "-----rrrrrrrrr--",
          "-----ooopplp----",
@@ -59,14 +57,14 @@ public class Utility {
          "----opooppplppp-",
          "----ooppppllll--",
          "------ppppppp---",
-         "-----bbbbrb-p---",
-         "----pbbbbbbppp--",
-         "---pprbbbbbpp---",
-         "---bbrrrrrrr----",
-         "---brrrrrrrr----",
-         "--bbrrrr-rr-----",
-         "--b----bbb------",
-         "-------bbbb-----"
+         "-----rrrrbr-w---",
+         "----wrrrrrrwww--",
+         "---wwbrrrrrww---",
+         "---oobbbbbbb----",
+         "---obbbbbbbb----",
+         "--oobbbb-bb-----",
+         "--o----ooo------",
+         "-------oooo-----"
       };
       String[] marioMoving3 = {
          "------rrrr------",
@@ -76,16 +74,15 @@ public class Utility {
          "----opooppplppp-",
          "----ooppppllll--",
          "------ppppppp---",
-         "-----bbrbbb-----",
-         "----bbbrrrbb----",
-         "----bbrrryrrp---",
-         "----bbbrrrrrr---",
-         "----rbbppprrr---",
-         "-----rbpprrr----",
-         "------rrrbbb----",
-         "------bbbbbbb---",
-         "------bbbb------",
-         "----------------"
+         "-----rrbrrr-----",
+         "----rrrbbbrr----",
+         "----rrbbbybbw---",
+         "----rrrbbbbbb---",
+         "----brrwwwbbb---",
+         "-----brwwbbb----",
+         "------bbbooo----",
+         "------ooooooo---",
+         "------oooo------"
                };
       String[] image = marioStill;
       if(type == "mario-still") {
@@ -94,6 +91,8 @@ public class Utility {
          image = marioMoving1;
       } else if(type == "mario-moving2") {
          image = marioMoving2;
+      } else if(type == "mario-moving3") {
+         image = marioMoving3;
       }
       
       for(int r = 0; r < image.length; r ++) {
@@ -126,7 +125,7 @@ public class Utility {
                   break;
             }
             if(drawPixel) {
-               g.fillRect((int)(x - (pixelSize * image[r].length()) + (c * pixelSize)), (int)(y - (pixelSize * image.length) + (r * pixelSize)), pixelSize, pixelSize);
+               g.fillRect((int)(x + (c * pixelSize)), (int)(y + (r * pixelSize)), pixelSize, pixelSize);
             }
          }
       }

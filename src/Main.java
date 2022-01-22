@@ -14,6 +14,7 @@ public class Main extends JComponent implements ActionListener {
    private Container content;
    private int screenWidth = 600, screenHeight = 600;
    private Timer t;
+   private int level = 1;
    
    private Mario mario = new Mario(80, 80);
    private Block blocks[] = {new Block(400, 80, "brick")};
@@ -23,7 +24,7 @@ public class Main extends JComponent implements ActionListener {
    
    Main() {
       setUp();
-      
+      setUpLevel(level);
       
    }
    
@@ -56,40 +57,140 @@ public class Main extends JComponent implements ActionListener {
    public void actionPerformed(ActionEvent e) {
       mario.update(marioCanMove("up"), marioCanMove("down"), marioCanMove("left"), marioCanMove("right"));
       
+      //scroll if mario reaches a certain point
+      if(mario.getPos().x >= screenWidth - 250) {
+         for(int i = 0; i < blocks.length; i ++) {
+            blocks[i].setPos(blocks[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), blocks[i].getPos().y);
+         }
+         mario.setPos(screenWidth - 250, mario.getPos().y);
+      }
+      
+      
       repaint();
    }
    
    public boolean marioCanMove(String dir) {
       boolean canMove = true;
       Mario a = mario;
-      for(int i = 0; i < blocks.length; i++) {
+      for(int i = 0; i < blocks.length; i ++) {
          Block b = blocks[i];
-         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y <= b.getPos().y + b.getSize().y && a.getPos().y >= b.getPos().y)) {
+         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y <= b.getPos().y + b.getSize().y && a.getPos().y >= b.getPos().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x <= b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
             canMove = false;
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x <= b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
             canMove = false;
          }
          
-         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y <= b.getPos().y + b.getSize().y && a.getPos().y >= b.getPos().y)) {
+         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
             a.setPos(b.getPos().x - a.getSize().x, a.getPos().y);
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y <= b.getPos().y + b.getSize().y && a.getPos().y >= b.getPos().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
             a.setPos(b.getPos().x + b.getSize().x, a.getPos().y);
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x <= b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y + b.getSize().y);
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x <= b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
          }
       }
       
       return canMove;
+   }
+   
+   public void setUpLevel(int level) {
+      /*
+      g = ground blocks
+      b = bricks
+      x = stone blocks
+      ? = question blocks
+      @ = mario
+      */
+      
+      String levels[][] = {
+         {
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "--------------?--------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "--------b----b?b---------x-x-------------------------------------------",
+         "--@---------------------xx-xx------------------------------------------",
+         "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+         },
+         
+         {
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------"
+         },
+         
+         {
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------",
+         "-----------------------------------------------------------------------"
+         }
+      };
+      
+      blocks = new Block[0];
+      for(int r = 0; r < levels[level - 1].length; r++) {
+         for(int c = 0; c < levels[level - 1][r].length(); c ++) {
+            switch(levels[level - 1][r].charAt(c)) {
+               case 'b':
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "brick"));
+                  break;
+               case 'g':
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "ground"));
+                  break;
+               case 'x':
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "stone"));
+                  break;
+               case '?':
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "question"));
+                  break;
+               case '@':
+                  mario = new Mario(c * 48, 26 + r * 48);
+                  frame.addKeyListener(mario);
+                  break;
+            }
+         }
+      }
+      
+   }
+   
+   public void addToBlocks(Block addElement) {
+      Block[] a = new Block[blocks.length + 1];
+      for(int i = 0; i < a.length - 1; i ++) {
+         a[i] = blocks[i];
+      }
+      a[a.length - 1] = addElement;
+      blocks = a;
    }
 }
 

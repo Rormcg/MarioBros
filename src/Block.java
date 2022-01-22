@@ -14,12 +14,25 @@ public class Block {
    }
    
    public void draw(Graphics g) {
-      g.setColor(Color.RED);
+      if(type == "brick") {
+         g.setColor(Color.RED);
+      } else if(type == "stone") {
+         g.setColor(Color.ORANGE);
+      } else if(type == "question") {
+         g.setColor(Color.ORANGE);
+      } else if(type == "ground") {
+         g.setColor(Color.BLACK);
+      }
+      
       g.fillRect((int)pos.x, (int)pos.y, (int)size.x, (int)size.y);
    }
    
    public Point2D.Double getPos() {
       return pos;
+   }
+   
+   public void setPos(double x, double y) {
+      pos = new Point2D.Double(x, y);
    }
    
    public Point2D.Double getSize() {

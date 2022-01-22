@@ -10,14 +10,16 @@ public class Mario implements KeyListener {
    private int runSpeed = 4;
    private Point2D.Double pos;
    private boolean leftPressed = false, rightPressed = false, jumping = false, running = false;
-   private Point2D.Double size = new Point2D.Double(30, 48);
+   private Point2D.Double size = new Point2D.Double(36, 48);
    private String facing = "right";
+   private int timer = 0;
    
    Mario(double x, double y) {
       pos = new Point2D.Double(x, y);
    }
    
    public void update(boolean up, boolean down, boolean left, boolean right) {
+      timer ++;
       if(rightPressed && right) {
          if(running) {
             pos.x += runSpeed;
@@ -34,7 +36,27 @@ public class Mario implements KeyListener {
    }
    
    public void draw(Graphics g) {
-      Utility.drawImage(pos.x, pos.y, 3, "mario", g);
+      if(!rightPressed && !leftPressed) {
+         Utility.drawImage(pos.x, pos.y, 3, "mario", g);
+      } else {
+         if(running) {
+            if((timer / 5) % 3 == 0) {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
+            } else if((timer / 5) % 3 == 1) {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
+            } else {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
+            }
+         } else {
+            if((timer / 10) % 3 == 0) {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
+            } else if((timer / 10) % 3 == 1) {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
+            } else {
+               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
+            }
+         }
+      }
    }
    
    public Point2D.Double getPos() {
