@@ -5,7 +5,7 @@ public class Background {
    
    
    public void draw(Graphics g) {
-      g.setColor(new Color(113, 255, 255));
+      g.setColor(new Color(69, 153, 222));
       g.fillRect(0, 0, 600, 600);
    }
 }
