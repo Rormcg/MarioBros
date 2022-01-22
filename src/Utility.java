@@ -5,7 +5,7 @@ public class Utility {
    
    
    public static void drawImage(double x, double y, int pixelSize, String type, Graphics g) {
-      String[] mario = {
+      String[] marioStill = {
          "---rrrrr----",
          "--rrrrrrrrr-",
          "--ooopplp---",
@@ -23,9 +23,49 @@ public class Utility {
          "-ooo----ooo-",
          "oooo----oooo"
       };
-      String[] image = mario;
-      if(type == "mario") {
-         image = mario;
+      String[] marioMoving1 = {
+         "---rrrrr----",
+         "--rrrrrrrrr-",
+         "--ooopplp---",
+         "-opoppplppp-",
+         "-opooppplppp",
+         "-ooppppllll-",
+         "---ppppppp--",
+         "---rbrrr----",
+         "-rrrbrrbrrr-",
+         "rrrrbbbbrrrr",
+         "wwrbybbybrww",
+         "wwwbbbbbbwww",
+         "wwbbbbbbbbww",
+         "--bbb--bbb--",
+         "-ooo----ooo-",
+         "oooo----oooo"
+      };
+      String[] marioMoving2 = {
+         "---rrrrr----",
+         "--rrrrrrrrr-",
+         "--ooopplp---",
+         "-opoppplppp-",
+         "-opooppplppp",
+         "-ooppppllll-",
+         "---ppppppp--",
+         "---rbrrr----",
+         "-rrrbrrbrrr-",
+         "rrrrbbbbrrrr",
+         "wwrbybbybrww",
+         "wwwbbbbbbwww",
+         "wwbbbbbbbbww",
+         "--bbb--bbb--",
+         "-ooo----ooo-",
+         "oooo----oooo"
+      };
+      String[] image = marioStill;
+      if(type == "mario-still") {
+         image = marioStill;
+      } else if(type == "mario-moving1") {
+         image = marioMoving1;
+      } else if(type == "mario-moving2") {
+         image = marioMoving2;
       }
       
       for(int r = 0; r < image.length; r ++) {
