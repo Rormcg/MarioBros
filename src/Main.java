@@ -1,6 +1,5 @@
 
 
-<<<<<<< HEAD
 import javax.swing.JFrame;
 import javax.swing.JComponent;
 import java.awt.Container;
@@ -14,9 +13,7 @@ public class Main extends JComponent{
    private Container content;
    private int screenWidth = 600, screenHeight = 600;
    
-=======
-public class Main {
->>>>>>> 1dd60cc1fbb27bc932c50e6907aee4379a1ac984
+
    Main() {
       frame = new JFrame("Super Mario Bros.");
       content = frame.getContentPane();

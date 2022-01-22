@@ -1,11 +1,16 @@
 
 
-
 public class Mario {
    private double speed;
    
-   Mario(int speed1) {
-      speed = speed1;
-      
+  
+   
+   
+   
+   
+   public void draw(graphics g) {
+   g.setColor(Color.Black);
+   g.fillRect(2,2,2,2);
+   
    }
 }
