@@ -5,6 +5,14 @@ public class Utility {
    
    
    public static void drawImage(double x, double y, int pixelSize, String type, Graphics g) {
+      /*
+      r = red
+      o = brown
+      p = peach
+      l = black
+      b = blue
+      y = yellow
+      */
       String[] marioStill = {
          "---rrrrr----",
          "--rrrrrrrrr-",
@@ -24,41 +32,61 @@ public class Utility {
          "oooo----oooo"
       };
       String[] marioMoving1 = {
-         "---rrrrr----",
-         "--rrrrrrrrr-",
-         "--ooopplp---",
-         "-opoppplppp-",
-         "-opooppplppp",
-         "-ooppppllll-",
-         "---ppppppp--",
-         "---rbrrr----",
-         "-rrrbrrbrrr-",
-         "rrrrbbbbrrrr",
-         "wwrbybbybrww",
-         "wwwbbbbbbwww",
-         "wwbbbbbbbbww",
-         "--bbb--bbb--",
-         "-ooo----ooo-",
-         "oooo----oooo"
+         "------rrrr------",
+         "-----rrrrrrrrr--",
+         "-----ooopplp----",
+         "----opoppplppp--",
+         "----opooppplppp-",
+         "----ooppppllll--",
+         "------ppppppp---",
+         "--bbbbbrrbb-----",
+         "ppbbbbbrrrbbbppp",
+         "ppp-bbbryrrrbbpp",
+         "pp--rrrrrrrrr--b",
+         "---rrrrrrrrrrrbb",
+         "---rrrrrrrrrrrbb",
+         "--bbrrrr---rrrbb",
+         "--bbb-----------",
+         "---bbb----------"
       };
       String[] marioMoving2 = {
-         "---rrrrr----",
-         "--rrrrrrrrr-",
-         "--ooopplp---",
-         "-opoppplppp-",
-         "-opooppplppp",
-         "-ooppppllll-",
-         "---ppppppp--",
-         "---rbrrr----",
-         "-rrrbrrbrrr-",
-         "rrrrbbbbrrrr",
-         "wwrbybbybrww",
-         "wwwbbbbbbwww",
-         "wwbbbbbbbbww",
-         "--bbb--bbb--",
-         "-ooo----ooo-",
-         "oooo----oooo"
+         "----------------",
+         "----------------",
+         "------rrrr------",
+         "-----rrrrrrrrr--",
+         "-----ooopplp----",
+         "----opoppplppp--",
+         "----opooppplppp-",
+         "----ooppppllll--",
+         "------ppppppp---",
+         "-----bbbbrb-p---",
+         "----pbbbbbbppp--",
+         "---pprbbbbbpp---",
+         "---bbrrrrrrr----",
+         "---brrrrrrrr----",
+         "--bbrrrr-rr-----",
+         "--b----bbb------",
+         "-------bbbb-----"
       };
+      String[] marioMoving3 = {
+         "------rrrr------",
+         "-----rrrrrrrrr--",
+         "-----ooopplp----",
+         "----opoppplppp--",
+         "----opooppplppp-",
+         "----ooppppllll--",
+         "------ppppppp---",
+         "-----bbrbbb-----",
+         "----bbbrrrbb----",
+         "----bbrrryrrp---",
+         "----bbbrrrrrr---",
+         "----rbbppprrr---",
+         "-----rbpprrr----",
+         "------rrrbbb----",
+         "------bbbbbbb---",
+         "------bbbb------",
+         "----------------"
+               };
       String[] image = marioStill;
       if(type == "mario-still") {
          image = marioStill;
