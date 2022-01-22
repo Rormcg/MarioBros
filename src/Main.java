@@ -38,7 +38,7 @@ public class Main extends JComponent implements ActionListener {
    }
    
    public void actionPerformed(ActionEvent e) {
-   
+      
    }
 }
 
