@@ -13,6 +13,8 @@ public class Mario implements KeyListener {
    private Point2D.Double size = new Point2D.Double(36, 48);
    private String facing = "right";
    private int timer = 0;
+   private int jumpingTimer = 30;
+   private boolean onGround;
    
    Mario(double x, double y) {
       pos = new Point2D.Double(x, y);
@@ -20,6 +22,11 @@ public class Mario implements KeyListener {
    
    public void update(boolean up, boolean down, boolean left, boolean right) {
       timer ++;
+      if(!down) {
+         onGround = true;
+      } else {
+         onGround = false;
+      }
       if(rightPressed && right) {
          if(running) {
             pos.x += runSpeed;
@@ -31,6 +38,18 @@ public class Mario implements KeyListener {
             pos.x -= runSpeed;
          } else {
             pos.x -= walkSpeed;
+         }
+      }
+      
+      if(jumping || down) {
+         if(jumpingTimer > 0 && up) {
+            jumpingTimer --;
+            pos.y -= runSpeed;
+         } else if(down){
+            pos.y += runSpeed;
+            jumping = false;
+         } else {
+            jumping = false;
          }
       }
    }
@@ -100,9 +119,10 @@ public class Mario implements KeyListener {
          //left
          leftPressed = true;
          facing = "left";
-      } else if(e.getKeyCode() == 38) {
+      } else if(e.getKeyCode() == 38 && onGround) {
          //up
          jumping = true;
+         jumpingTimer = 30;
       } else if(e.getKeyCode() == 39) {
          //right
          rightPressed = true;
