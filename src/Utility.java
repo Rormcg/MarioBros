@@ -156,6 +156,21 @@ public class Utility {
          "---ooooooo------",         
          "------oooo------"   
       };
+      String[] marioDies
+         "------rrrr------",
+         "---p-rrrrrr-p---",
+         "-ppprplpplprppp-",
+         "-pprrrlpplrrrpp-",
+         "-pprrlpppplrrpp-",
+         "---rrllppllrr---",
+         "----rpllllpr----",
+         "----rppppppr----",
+         "---bbbppppbbb---",
+         "--rrbbrrrrbbrr--",
+         "--rrrbbrrbbrrr--",
+         "--rrrbyrrybrrr--",
+         "---rrbbbbbbrr---"
+      };
       String[] brick = {
          "oooooooloooooool",
          "oooooooloooooool",
