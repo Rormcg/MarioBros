@@ -79,9 +79,9 @@ public class Main extends JComponent implements ActionListener {
             System.out.println("H");
          } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x - a.getSize().x>= b.getPos().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
             canMove = false;
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x - a.getSize().x>= b.getPos().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
             canMove = false;
          }
          
@@ -91,10 +91,10 @@ public class Main extends JComponent implements ActionListener {
          } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
             a.setPos(b.getPos().x + b.getSize().x, a.getPos().y);
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x - a.getSize().x>= b.getPos().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y + b.getSize().y);
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x - a.getSize().x>= b.getPos().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
          } else if(a.getPos().x + a.getSize().x > screenWidth) {
@@ -177,7 +177,7 @@ public class Main extends JComponent implements ActionListener {
                   addToBlocks(new Block(c * 48, 26 + r * 48, "ground"));
                   break;
                case 'x':
-                  addToBlocks(new Block(c * 48, 26 + r * 48, "stone"));
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "block"));
                   break;
                case '?':
                   addToBlocks(new Block(c * 48, 26 + r * 48, "question"));

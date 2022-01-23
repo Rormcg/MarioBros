@@ -12,6 +12,7 @@ public class Utility {
       l = black
       b = blue
       y = yellow
+      u = cream
       */
       String[] marioStillA = {
          "---rrrrr----",
@@ -171,43 +172,43 @@ public class Utility {
          "oooloooooooloooo",
          "oooloooooooloooo",
          "oooloooooooloooo",
-         "llllllllllllllll"}
+         "llllllllllllllll"};
          
       String[] question = {
-         "lppppppppppppppl",
-         "pyyyyyyyyyyyyyyl",
-         "pybyyyyyyyyyyybl",
-         "pyyyyppppppyyyyl",
-         "pyyyppllllppyyyl",
-         "pyyypplyyypplyyl",
-         "pyyypplyyypplyyl",
-         "pyyyyllyyppplyyl",
-         "pyyyyyyypplllyyl",
-         "pyyyyyyypplyyyyl",
-         "pyyyyyyyyllyyyyl",
-         "pyyyyyyyppyyyyyl",
-         "pyyyyyyypplyyyyl",
-         "pybyyyyyyllyybyl",
-         "pyyyyyyyyyyyyyyl",
-         "llllllllllllllll"}
+         "-tttttttttttttt-",
+         "tyyyyyyyyyyyyyyl",
+         "tybyyyyyyyyyybyl",
+         "tyyyytttttyyyyyl",
+         "tyyyttlllttyyyyl",
+         "tyyyttlyyttlyyyl",
+         "tyyyttlyyttlyyyl",
+         "tyyyyllytttlyyyl",
+         "tyyyyyyttlllyyyl",
+         "tyyyyyyttlyyyyyl",
+         "tyyyyyyyllyyyyyl",
+         "tyyyyyyttyyyyyyl",
+         "tyyyyyyttlyyyyyl",
+         "tybyyyyyllyyybyl",
+         "tyyyyyyyyyyyyyyl",
+         "-llllllllllllll-"};
          
       String[] ground = {
-         "oyyyyyyyyloyyyyo",
-         "ooooooooooyooooy",
-         "ooooooooooyooooy",
-         "ooooooooooyooooy",
-         "ooooooooooyloooy",
+         "ouuuuuuuulouuuuo",
+         "oooooooooouoooou",
+         "oooooooooouoooou",
+         "oooooooooouoooou",
+         "ooooooooooulooou",
          "ooooooooooollllo",
-         "ooooooooooyooool",
-         "ooooooooooyooool",
-         "ooooooooooyooool",
-         "ooooooooooyooool",
-         "lloooooooyoooool",
-         "yylloooooyoooool",
-         "yoyyllllyooooool",
-         "yoooyyyylyoooool",
-         "yoooooolyoooooll",
-         "olllllollllllllo"}
+         "oooooooooouooool",
+         "oooooooooouooool",
+         "oooooooooouooool",
+         "oooooooooouooool",
+         "llooooooouoooool",
+         "uullooooouoooool",
+         "uouulllluooooool",
+         "uooouuuuluoooool",
+         "uooooooluoooooll",
+         "olllllollllllllo"};
       
       String[] block = {
          "oppppppppppppppl",
@@ -225,7 +226,7 @@ public class Utility {
          "ppplllllllllolll",
          "ppllllllllllloll",
          "plllllllllllllol",
-         "lllllllllllllllo"}
+         "lllllllllllllllo"};
       
       String[] image = marioStillA;
       if(type == "mario-stillA") {
@@ -244,6 +245,14 @@ public class Utility {
          image = marioMoving2B;
       } else if(type == "mario-moving3B") {
          image = marioMoving3B;
+      } else if(type == "block") {
+         image = block;
+      } else if(type == "brick") {
+         image = brick;
+      } else if(type == "question") {
+         image = question;
+      } else if(type == "ground") {
+         image = ground;
       }
       
       for(int r = 0; r < image.length; r ++) {
@@ -270,6 +279,12 @@ public class Utility {
                   break;
                case 'y':
                   g.setColor(Color.YELLOW);
+                  break;
+               case 't':
+                  g.setColor(new Color(255, 139, 23));
+                  break;
+               case 'u':
+                  g.setColor(new Color(235, 204, 99));
                   break;
                default:
                   drawPixel = false;

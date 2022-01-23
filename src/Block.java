@@ -15,16 +15,15 @@ public class Block {
    
    public void draw(Graphics g) {
       if(type == "brick") {
-         g.setColor(Color.RED);
-      } else if(type == "stone") {
-         g.setColor(Color.ORANGE);
+         Utility.drawImage(pos.x, pos.y, 3, "brick", g);
+      } else if(type == "block") {
+         Utility.drawImage(pos.x, pos.y, 3, "block", g);
       } else if(type == "question") {
-         g.setColor(Color.ORANGE);
+         Utility.drawImage(pos.x, pos.y, 3, "question", g);
       } else if(type == "ground") {
-         g.setColor(Color.BLACK);
+         Utility.drawImage(pos.x, pos.y, 3, "ground", g);
       }
       
-      g.fillRect((int)pos.x, (int)pos.y, (int)size.x, (int)size.y);
    }
    
    public Point2D.Double getPos() {
