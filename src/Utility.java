@@ -227,15 +227,23 @@ public class Utility {
          "plllllllllllllol",
          "lllllllllllllllo"}
       
-      String[] image = marioStill;
-      if(type == "mario-still") {
-         image = marioStill;
-      } else if(type == "mario-moving1") {
-         image = marioMoving1;
-      } else if(type == "mario-moving2") {
-         image = marioMoving2;
-      } else if(type == "mario-moving3") {
-         image = marioMoving3;
+      String[] image = marioStillA;
+      if(type == "mario-stillA") {
+         image = marioStillA;
+      } else if(type == "mario-moving1A") {
+         image = marioMoving1A;
+      } else if(type == "mario-moving2A") {
+         image = marioMoving2A;
+      } else if(type == "mario-moving3A") {
+         image = marioMoving3A;
+      } else if(type == "mario-stillB") {
+         image = marioStillB;
+      } else if(type == "mario-moving1B") {
+         image = marioMoving1B;
+      } else if(type == "mario-moving2B") {
+         image = marioMoving2B;
+      } else if(type == "mario-moving3B") {
+         image = marioMoving3B;
       }
       
       for(int r = 0; r < image.length; r ++) {

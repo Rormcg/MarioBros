@@ -13,6 +13,8 @@ public class Mario implements KeyListener {
    private Point2D.Double size = new Point2D.Double(36, 48);
    private String facing = "right";
    private int timer = 0;
+   private int jumpingTimer = 30;
+   private boolean onGround;
    
    Mario(double x, double y) {
       pos = new Point2D.Double(x, y);
@@ -20,6 +22,11 @@ public class Mario implements KeyListener {
    
    public void update(boolean up, boolean down, boolean left, boolean right) {
       timer ++;
+      if(!down) {
+         onGround = true;
+      } else {
+         onGround = false;
+      }
       if(rightPressed && right) {
          if(running) {
             pos.x += runSpeed;
@@ -33,27 +40,63 @@ public class Mario implements KeyListener {
             pos.x -= walkSpeed;
          }
       }
+      
+      if(jumping || down) {
+         if(jumpingTimer > 0 && up) {
+            jumpingTimer --;
+            pos.y -= runSpeed;
+         } else if(down){
+            pos.y += runSpeed;
+            jumping = false;
+         } else {
+            jumping = false;
+         }
+      }
    }
    
    public void draw(Graphics g) {
-      if(!rightPressed && !leftPressed) {
-         Utility.drawImage(pos.x, pos.y, 3, "mario", g);
-      } else {
-         if(running) {
-            if((timer / 5) % 3 == 0) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
-            } else if((timer / 5) % 3 == 1) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
-            } else {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
-            }
+      if(facing == "right") {
+         if(!rightPressed && !leftPressed) {
+            Utility.drawImage(pos.x, pos.y, 3, "mario-stillA", g);
          } else {
-            if((timer / 10) % 3 == 0) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
-            } else if((timer / 10) % 3 == 1) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
+            if(running) {
+               if((timer / 5) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1A", g);
+               } else if((timer / 5) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2A", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3A", g);
+               }
             } else {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
+               if((timer / 10) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1A", g);
+               } else if((timer / 10) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2A", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3A", g);
+               }
+            }
+         }
+      } else {
+         if(!rightPressed && !leftPressed) {
+            Utility.drawImage(pos.x, pos.y, 3, "mario-stillB", g);
+         } else {
+            if(running) {
+               if((timer / 5) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1B", g);
+               } else if((timer / 5) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2B", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3B", g);
+               }
+            } else {
+               if((timer / 10) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1B", g);
+               } else if((timer / 10) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2B", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3B", g);
+               }
             }
          }
       }
@@ -76,9 +119,10 @@ public class Mario implements KeyListener {
          //left
          leftPressed = true;
          facing = "left";
-      } else if(e.getKeyCode() == 38) {
+      } else if(e.getKeyCode() == 38 && onGround) {
          //up
          jumping = true;
+         jumpingTimer = 30;
       } else if(e.getKeyCode() == 39) {
          //right
          rightPressed = true;
