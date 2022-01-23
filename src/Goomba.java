@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class Goomba {
    private Point2D.Double pos;
-   private Point2D.Double size = new Point2D.Double(48, 48);
+   private Point2D.Double size = new Point2D.Double(48, 42);
    private int timer = 0;
    private int speed = 1;
    private String moving = "left";
