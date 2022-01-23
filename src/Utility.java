@@ -156,7 +156,7 @@ public class Utility {
          "---ooooooo------",         
          "------oooo------"   
       };
-      String[] marioDies
+      String[] marioDies = {
          "------rrrr------",
          "---p-rrrrrr-p---",
          "-ppprplpplprppp-",
@@ -169,8 +169,7 @@ public class Utility {
          "--rrbbrrrrbbrr--",
          "--rrrbbrrbbrrr--",
          "--rrrbyrrybrrr--",
-         "---rrbbbbbbrr---"
-      };
+         "---rrbbbbbbrr---"};
       String[] brick = {
          "oooooooloooooool",
          "oooooooloooooool",
@@ -349,6 +348,8 @@ public class Utility {
          image = goomba2;
       } else if(type == "goomba3") {
          image = goomba3;
+      } else if(type == "marioDies") {
+         image = marioDies;
       }
       
       for(int r = 0; r < image.length; r ++) {

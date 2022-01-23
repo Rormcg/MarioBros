@@ -15,6 +15,7 @@ public class Main extends JComponent implements ActionListener {
    private int screenWidth = 600, screenHeight = 600;
    private Timer t;
    private int level = 1;
+   private String scene = "Game";
    
    private Mario mario = new Mario(80, 80);
    private Block blocks[] = new Block[0];
@@ -48,36 +49,49 @@ public class Main extends JComponent implements ActionListener {
    
    
    public void paintComponent(Graphics g) {
-      background.draw(g);
-      mario.draw(g);
-      
-      for(int i = 0; i < blocks.length; i++) {
-         blocks[i].draw(g);
-      }
-      for(int i = 0; i < goombas.length; i ++) {
-         goombas[i].draw(g);
+      if(scene == "Game") {
+         background.draw(g);
+         mario.draw(g);
+         goalFlag.draw(g);
+         for(int i = 0; i < blocks.length; i++) {
+            blocks[i].draw(g);
+         }
+         for(int i = 0; i < goombas.length; i ++) {
+            goombas[i].draw(g);
+         }
+      } else if(scene == "GameOver") {
+         gameOver.draw(g);
       }
    }
    
    public void actionPerformed(ActionEvent e) {
-      mario.update(marioCanMove("up"), marioCanMove("down"), marioCanMove("left"), marioCanMove("right"));
-      
-      //scroll if mario reaches a certain point
-      if(mario.getPos().x >= screenWidth - 250) {
-         for(int i = 0; i < blocks.length; i ++) {
-            blocks[i].setPos(blocks[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), blocks[i].getPos().y);
+      if(scene == "Game") {
+         mario.update(marioCanMove("up"), marioCanMove("down"), marioCanMove("left"), marioCanMove("right"));
+         
+         //scroll if mario reaches a certain point
+         if(mario.getPos().x >= screenWidth - 250) {
+            for(int i = 0; i < blocks.length; i ++) {
+               blocks[i].setPos(blocks[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), blocks[i].getPos().y);
+            }
+            for(int i = 0; i < goombas.length; i ++) {
+               goombas[i].setPos(goombas[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), goombas[i].getPos().y);
+            }
+            mario.setPos(screenWidth - 250, mario.getPos().y);
          }
+         
          for(int i = 0; i < goombas.length; i ++) {
-            goombas[i].setPos(goombas[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), goombas[i].getPos().y);
+            goombas[i].update(goombaCanMove("down", goombas[i]), goombaCanMove("left", goombas[i]), goombaCanMove("right", goombas[i]));
          }
-         mario.setPos(screenWidth - 250, mario.getPos().y);
+         
+         checkForMarioHit();
+         if(mario.getIsDead()) {
+            scene = "GameOver";
+         }
+         
+      } else if(scene == "GameOver") {
+         gameOver.update();
       }
       
-      for(int i = 0; i < goombas.length; i ++) {
-         goombas[i].update(goombaCanMove("down", goombas[i]), goombaCanMove("left", goombas[i]), goombaCanMove("right", goombas[i]));
-      }
-      
-      //checkForMarioHit();
       
       repaint();
    }
