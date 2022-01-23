@@ -286,7 +286,7 @@ public class Main extends JComponent implements ActionListener {
                   addToBlocks(new Block(c * 48, 26 + r * 48, "brick"));
                   break;
                case '!':
-                  goalFlag = new GoalFlag((c * 48) + 19);
+                  goalFlag = new GoalFlag((c * 48) + 20);
                   break;
                case 'g':
                   addToBlocks(new Block(c * 48, 26 + r * 48, "ground"));
