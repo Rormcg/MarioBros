@@ -9,7 +9,7 @@ public class Mario implements KeyListener {
    private int walkSpeed = 2;
    private int runSpeed = 4;
    private Point2D.Double pos;
-   private boolean leftPressed = false, rightPressed = false, jumping = false, running = false;
+   private boolean leftPressed = false, rightPressed = false, jumping = false, running = false, upPressed = false;
    private Point2D.Double size = new Point2D.Double(36, 48);
    private String facing = "right";
    private int timer = 0;
@@ -42,7 +42,7 @@ public class Mario implements KeyListener {
       }
       
       if(jumping || down) {
-         if(jumpingTimer > 0 && up) {
+         if(((jumping && jumpingTimer > 25) || (jumping && jumpingTimer > 0 && upPressed)) && up) {
             jumpingTimer --;
             pos.y -= runSpeed;
          } else if(down){
@@ -122,7 +122,8 @@ public class Mario implements KeyListener {
       } else if(e.getKeyCode() == 38 && onGround) {
          //up
          jumping = true;
-         jumpingTimer = 30;
+         jumpingTimer = 40;
+         upPressed = true;
       } else if(e.getKeyCode() == 39) {
          //right
          rightPressed = true;
@@ -138,6 +139,7 @@ public class Mario implements KeyListener {
          leftPressed = false;
       } else if(e.getKeyCode() == 38) {
          //up
+         upPressed = false;
       } else if(e.getKeyCode() == 39) {
          //right
          rightPressed = false;

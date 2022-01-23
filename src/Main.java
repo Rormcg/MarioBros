@@ -1,4 +1,4 @@
-
+//Group 112
 
 import javax.swing.JFrame;
 import javax.swing.JComponent;
@@ -74,30 +74,31 @@ public class Main extends JComponent implements ActionListener {
       Mario a = mario;
       for(int i = 0; i < blocks.length; i ++) {
          Block b = blocks[i];
-         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
-            System.out.println("H");
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
          }
          
-         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
             a.setPos(b.getPos().x - a.getSize().x, a.getPos().y);
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
             a.setPos(b.getPos().x + b.getSize().x, a.getPos().y);
-         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
+         } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y + b.getSize().y);
-         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x >= b.getPos().x - b.getSize().x)) {
+         } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
-         } else if(a.getPos().x + a.getSize().x > screenWidth) {
+         }
+         
+         else if(a.getPos().x + a.getSize().x > screenWidth) {
             a.setPos(screenWidth - a.getSize().x, a.getPos().y);
             canMove = false;
          } else if(a.getPos().x < 0) {
@@ -121,18 +122,18 @@ public class Main extends JComponent implements ActionListener {
       
       String levels[][] = {
          {
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "--------------?--------------------------------------------------------",
-         "-----------------------------------------------------------------------",
-         "--------b----b?b---------x-x-------------------------------------------",
-         "--@---------------------xx-xx------------------------------------------",
-         "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+         "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",
+         "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",
+         "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",
+         "------------------------------------------------------------------------------------------------------------------------------------------------------xx-----------------------------------",
+         "-----------------------------------------------------------------------------------------------------------------------------------------------------xxx--------------------------------------",
+         "--------------------?--------------------bbbbbbbb---bbb?--------------?-----------bbb----b??b-------------------------------------------------------xxxx-------------------------------",
+         "---------------------------------------------------------------------------------------------------------------------------------------------------xxxxx--------------bbb----------------------",
+         "--------------------------------------------------------------------------------------------------x-------------xx--x-----------------------------xxxxxx--------------bbb-----------------",
+         "----------------?-b?b?b---------------b?b--------------b-----b?----?--?--?-----b----------bb-----xx--xx--------xxx--xx---------bb?b--------------xxxxxxx-------------bbbbb-------",
+         "------------------------------------------------------------------------------------------------xxx--xxx------xxxx--xxx-------------------------xxxxxxxx-------------bbbbb",
+         "---@-------------------------------------------------------------------------------------------xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
+         "gggggggggggggggggggggggggggggg--ggggggggggggggg---gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
          },
          
          {
