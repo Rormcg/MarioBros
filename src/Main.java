@@ -76,6 +76,7 @@ public class Main extends JComponent implements ActionListener {
          goombas[i].update(goombaCanMove("down", goombas[i]), goombaCanMove("left", goombas[i]), goombaCanMove("right", goombas[i]));
       }
       
+      checkForMarioHit();
       
       repaint();
    }
@@ -122,13 +123,43 @@ public class Main extends JComponent implements ActionListener {
       return canMove;
    }
    
+   public void checkForMarioHit() {
+      Mario a = mario;
+      for(int i = 0; i < goombas.length; i ++) {
+         Goomba b = goombas[i];
+         if(a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+            b.setIsDead(true);
+            a.setJumping(true);
+            a.setJumpingTimer(20);
+         } else if(a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+            a.setIsDead(true);
+         }
+         
+         else if(a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+            b.setIsDead(true);
+            a.setJumping(true);
+            a.setJumpingTimer(20);
+         } else if(a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x) {
+            a.setIsDead(true);
+         }
+      }
+   }
+   
    public boolean goombaCanMove(String dir, Goomba a) {
       boolean canMove = true;
       for(int i = 0; i < blocks.length; i ++) {
          Block b = blocks[i];
-         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
          } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
@@ -136,10 +167,10 @@ public class Main extends JComponent implements ActionListener {
             canMove = false;
          }
          
-         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         else if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
             a.setPos(b.getPos().x - a.getSize().x, a.getPos().y);
-         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
+         } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
             a.setPos(b.getPos().x + b.getSize().x, a.getPos().y);
          } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {

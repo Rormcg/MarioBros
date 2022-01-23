@@ -7,20 +7,23 @@ public class Goomba {
    private int timer = 0;
    private int speed = 1;
    private String moving = "left";
+   private boolean isDead = false;
    
    Goomba(double x, double y) {
       pos = new Point2D.Double(x, y);
    }
    
    public void draw(Graphics g) {
-      if((timer / 20) % 4 == 0) {
-         Utility.drawImage(pos.x, pos.y, 3, "goomba1", g);
-      } else if((timer / 20) % 4 == 1) {
-         Utility.drawImage(pos.x, pos.y, 3, "goomba2", g);
-      } else if((timer / 20) % 4 == 2) {
-         Utility.drawImage(pos.x, pos.y, 3, "goomba3", g);
-      } else {
-         Utility.drawImage(pos.x, pos.y, 3, "goomba2", g);
+      if(!isDead) {
+         if((timer / 20) % 4 == 0) {
+            Utility.drawImage(pos.x, pos.y, 3, "goomba1", g);
+         } else if((timer / 20) % 4 == 1) {
+            Utility.drawImage(pos.x, pos.y, 3, "goomba2", g);
+         } else if((timer / 20) % 4 == 2) {
+            Utility.drawImage(pos.x, pos.y, 3, "goomba3", g);
+         } else {
+            Utility.drawImage(pos.x, pos.y, 3, "goomba2", g);
+         }
       }
    }
    
@@ -56,4 +59,9 @@ public class Goomba {
    public void setPos(double x, double y) {
       pos = new Point2D.Double(x, y);
    }
+   
+   public void setIsDead(boolean a) {
+      isDead = a;
+   }
+   
 }
