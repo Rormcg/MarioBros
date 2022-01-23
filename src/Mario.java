@@ -36,24 +36,48 @@ public class Mario implements KeyListener {
    }
    
    public void draw(Graphics g) {
-      if(!rightPressed && !leftPressed) {
-         Utility.drawImage(pos.x, pos.y, 3, "mario", g);
-      } else {
-         if(running) {
-            if((timer / 5) % 3 == 0) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
-            } else if((timer / 5) % 3 == 1) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
-            } else {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
-            }
+      if(facing == "right") {
+         if(!rightPressed && !leftPressed) {
+            Utility.drawImage(pos.x, pos.y, 3, "mario-stillA", g);
          } else {
-            if((timer / 10) % 3 == 0) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving1", g);
-            } else if((timer / 10) % 3 == 1) {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving2", g);
+            if(running) {
+               if((timer / 5) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1A", g);
+               } else if((timer / 5) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2A", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3A", g);
+               }
             } else {
-               Utility.drawImage(pos.x, pos.y, 3, "mario-moving3", g);
+               if((timer / 10) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1A", g);
+               } else if((timer / 10) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2A", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3A", g);
+               }
+            }
+         }
+      } else {
+         if(!rightPressed && !leftPressed) {
+            Utility.drawImage(pos.x, pos.y, 3, "mario-stillB", g);
+         } else {
+            if(running) {
+               if((timer / 5) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1B", g);
+               } else if((timer / 5) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2B", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3B", g);
+               }
+            } else {
+               if((timer / 10) % 3 == 0) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving1B", g);
+               } else if((timer / 10) % 3 == 1) {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving2B", g);
+               } else {
+                  Utility.drawImage(pos.x, pos.y, 3, "mario-moving3B", g);
+               }
             }
          }
       }
