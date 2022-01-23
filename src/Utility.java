@@ -337,8 +337,10 @@ public class Utility {
          image = block;
       } else if(type == "brick") {
          image = brick;
-      } else if(type == "question") {
-         image = question;
+      } else if(type == "questionA") {
+         image = questionA;
+      } else if(type == "questionB") {
+         image = questionB;
       } else if(type == "ground") {
          image = ground;
       } else if(type == "goomba1") {

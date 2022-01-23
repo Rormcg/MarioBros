@@ -18,8 +18,10 @@ public class Block {
          Utility.drawImage(pos.x, pos.y, 3, "brick", g);
       } else if(type == "block") {
          Utility.drawImage(pos.x, pos.y, 3, "block", g);
-      } else if(type == "question") {
-         Utility.drawImage(pos.x, pos.y, 3, "question", g);
+      } else if(type == "questionA") {
+         Utility.drawImage(pos.x, pos.y, 3, "questionA", g);
+      } else if(type == "questionB") {
+         Utility.drawImage(pos.x, pos.y, 3, "questionB", g);
       } else if(type == "ground") {
          Utility.drawImage(pos.x, pos.y, 3, "ground", g);
       }
@@ -30,12 +32,20 @@ public class Block {
       return pos;
    }
    
+   public String getType() {
+      return type;
+   }
+   
    public void setPos(double x, double y) {
       pos = new Point2D.Double(x, y);
    }
    
    public Point2D.Double getSize() {
       return size;
+   }
+   
+   public void setType(String a) {
+      type = a;
    }
    
 }

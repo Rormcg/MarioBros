@@ -22,35 +22,37 @@ public class Mario implements KeyListener {
    }
    
    public void update(boolean up, boolean down, boolean left, boolean right) {
-      timer ++;
-      if(!down) {
-         onGround = true;
-      } else {
-         onGround = false;
-      }
-      if(rightPressed && right) {
-         if(running) {
-            pos.x += runSpeed;
+      if(!isDead) {
+         timer ++;
+         if(!down) {
+            onGround = true;
          } else {
-            pos.x += walkSpeed;
+            onGround = false;
          }
-      } else if(leftPressed && left) {
-         if(running) {
-            pos.x -= runSpeed;
-         } else {
-            pos.x -= walkSpeed;
+         if(rightPressed && right) {
+            if(running) {
+               pos.x += runSpeed;
+            } else {
+               pos.x += walkSpeed;
+            }
+         } else if(leftPressed && left) {
+            if(running) {
+               pos.x -= runSpeed;
+            } else {
+               pos.x -= walkSpeed;
+            }
          }
-      }
-      
-      if(jumping || down) {
-         if(((jumping && jumpingTimer > 25) || (jumping && jumpingTimer > 0 && upPressed)) && up) {
-            jumpingTimer --;
-            pos.y -= runSpeed;
-         } else if(down){
-            pos.y += runSpeed;
-            jumping = false;
-         } else {
-            jumping = false;
+         
+         if(jumping || down) {
+            if(((jumping && jumpingTimer > 25) || (jumping && jumpingTimer > 0 && upPressed)) && up) {
+               jumpingTimer --;
+               pos.y -= runSpeed;
+            } else if(down){
+               pos.y += runSpeed;
+               jumping = false;
+            } else {
+               jumping = false;
+            }
          }
       }
    }
