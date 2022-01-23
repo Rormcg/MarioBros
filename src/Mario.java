@@ -29,20 +29,25 @@ public class Mario implements KeyListener {
          } else {
             onGround = false;
          }
-         if(rightPressed && right) {
-            if(running) {
-               pos.x += runSpeed;
-            } else {
-               pos.x += walkSpeed;
+         if(leftPressed) {
+            facing = "left";
+            if(left) {
+               if(running) {
+                  pos.x -= runSpeed;
+               } else {
+                  pos.x -= walkSpeed;
+               }
             }
-         } else if(leftPressed && left) {
-            if(running) {
-               pos.x -= runSpeed;
-            } else {
-               pos.x -= walkSpeed;
+         } else if(rightPressed) {
+            facing = "right";
+            if(right) {
+               if(running) {
+                  pos.x += runSpeed;
+               } else {
+                  pos.x += walkSpeed;
+               }
             }
          }
-         
          if(jumping || down) {
             if(((jumping && jumpingTimer > 25) || (jumping && jumpingTimer > 0 && upPressed)) && up) {
                jumpingTimer --;

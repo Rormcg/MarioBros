@@ -152,7 +152,6 @@ public class Main extends JComponent implements ActionListener {
       Mario a = mario;
       for(int i = 0; i < goombas.length; i ++) {
          Goomba b = goombas[i];
-         //a.setSize(42, a.getSize().y);
          if(!a.getIsDead() && !b.getIsDead()) {
             if(a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
                a.setIsDead(true);
@@ -179,7 +178,6 @@ public class Main extends JComponent implements ActionListener {
             }
          }
       }
-      //a.setSize(48, a.getSize().y);
    }
    
    public boolean goombaCanMove(String dir, Goomba a) {
