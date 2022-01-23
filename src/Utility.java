@@ -174,7 +174,7 @@ public class Utility {
          "oooloooooooloooo",
          "llllllllllllllll"};
          
-      String[] question = {
+      String[] questionA = {
          "-tttttttttttttt-",
          "tyyyyyyyyyyyyyyl",
          "tybyyyyyyyyyybyl",
@@ -190,6 +190,24 @@ public class Utility {
          "tyyyyyyttlyyyyyl",
          "tybyyyyyllyyybyl",
          "tyyyyyyyyyyyyyyl",
+         "-llllllllllllll-"};
+         
+      String[] questionB = {
+         "-llllllllllllll-",
+         "looooooooooooool",
+         "loloooooooooolol",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "looooooooooooool",
+         "loloooooooooolol",
+         "looooooooooooool",
          "-llllllllllllll-"};
          
       String[] ground = {
