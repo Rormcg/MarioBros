@@ -13,7 +13,7 @@ public class Utility {
       b = blue
       y = yellow
       */
-      String[] marioStill = {
+      String[] marioStillA = {
          "---rrrrr----",
          "--rrrrrrrrr-",
          "--ooopplp---",
@@ -31,7 +31,7 @@ public class Utility {
          "-ooo----ooo-",
          "oooo----oooo"
       };
-      String[] marioMoving1 = {
+      String[] marioMoving1A = {
          "------rrrr------",
          "-----rrrrrrrrr--",
          "-----ooopplp----",
