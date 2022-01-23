@@ -155,6 +155,77 @@ public class Utility {
          "---ooooooo------",         
          "------oooo------"   
       };
+      String[] brick = {
+         "oooooooloooooool",
+         "oooooooloooooool",
+         "oooooooloooooool",
+         "llllllllllllllll",
+         "oooloooooooloooo",
+         "oooloooooooloooo",
+         "oooloooooooloooo",
+         "llllllllllllllll",
+         "oooooooloooooool",
+         "oooooooloooooool",
+         "oooooooloooooool",
+         "llllllllllllllll",
+         "oooloooooooloooo",
+         "oooloooooooloooo",
+         "oooloooooooloooo",
+         "llllllllllllllll"}
+         
+      String[] question = {
+         "lppppppppppppppl",
+         "pyyyyyyyyyyyyyyl",
+         "pybyyyyyyyyyyybl",
+         "pyyyyppppppyyyyl",
+         "pyyyppllllppyyyl",
+         "pyyypplyyypplyyl",
+         "pyyypplyyypplyyl",
+         "pyyyyllyyppplyyl",
+         "pyyyyyyypplllyyl",
+         "pyyyyyyypplyyyyl",
+         "pyyyyyyyyllyyyyl",
+         "pyyyyyyyppyyyyyl",
+         "pyyyyyyypplyyyyl",
+         "pybyyyyyyllyybyl",
+         "pyyyyyyyyyyyyyyl",
+         "llllllllllllllll"}
+         
+      String[] ground = {
+         "oyyyyyyyyloyyyyo",
+         "ooooooooooyooooy",
+         "ooooooooooyooooy",
+         "ooooooooooyooooy",
+         "ooooooooooyloooy",
+         "ooooooooooollllo",
+         "ooooooooooyooool",
+         "ooooooooooyooool",
+         "ooooooooooyooool",
+         "ooooooooooyooool",
+         "lloooooooyoooool",
+         "yylloooooyoooool",
+         "yoyyllllyooooool",
+         "yoooyyyylyoooool",
+         "yoooooolyoooooll",
+         "olllllollllllllo"}
+      
+      String[] block = {
+         "oppppppppppppppl",
+         "poppppppppppppll",
+         "ppopppppppppplll",
+         "pppoppppppppllll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppppoooooooollll",
+         "ppplllllllllolll",
+         "ppllllllllllloll",
+         "plllllllllllllol",
+         "lllllllllllllllo"}
       
       String[] image = marioStill;
       if(type == "mario-still") {
