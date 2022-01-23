@@ -10,7 +10,7 @@ public class Mario implements KeyListener {
    private int runSpeed = 4;
    private Point2D.Double pos;
    private boolean leftPressed = false, rightPressed = false, jumping = false, running = false, upPressed = false;
-   private Point2D.Double size = new Point2D.Double(48, 48);
+   private Point2D.Double size = new Point2D.Double(42, 48);
    private String facing = "right";
    private int timer = 0;
    private int jumpingTimer = 30;
