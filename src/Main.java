@@ -17,7 +17,7 @@ public class Main extends JComponent implements ActionListener {
    private int level = 1;
    
    private Mario mario = new Mario(80, 80);
-   private Block blocks[] = {new Block(400, 80, "brick")};
+   private Block blocks[] = new Block[0];
    private Background background = new Background();
    
    
@@ -76,6 +76,7 @@ public class Main extends JComponent implements ActionListener {
          Block b = blocks[i];
          if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
+            System.out.println("H");
          } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y < b.getPos().y + b.getSize().y && a.getPos().y > b.getPos().y)) {
             canMove = false;
          } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
@@ -96,7 +97,15 @@ public class Main extends JComponent implements ActionListener {
          } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x > b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
+         } else if(a.getPos().x + a.getSize().x > screenWidth) {
+            a.setPos(screenWidth - a.getSize().x, a.getPos().y);
+            canMove = false;
+         } else if(a.getPos().x < 0) {
+            a.setPos(0, a.getPos().y);
+            canMove = false;
          }
+         System.out.println(canMove);
+         
       }
       
       return canMove;
