@@ -127,28 +127,28 @@ public class Main extends JComponent implements ActionListener {
       Mario a = mario;
       for(int i = 0; i < goombas.length; i ++) {
          Goomba b = goombas[i];
-         if(a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+         if(!b.getIsDead() && a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+            a.setIsDead(true);
+         } else if(!b.getIsDead() && a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(!b.getIsDead() && a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(marioCanMove("down") && !b.getIsDead() && a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
             b.setIsDead(true);
             a.setJumping(true);
-            a.setJumpingTimer(20);
-         } else if(a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
-            a.setIsDead(true);
+            a.setJumpingTimer(40);
          }
          
-         else if(a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+         else if(!b.getIsDead() && a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+           a.setIsDead(true);
+         } else if(!b.getIsDead() && a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(!b.getIsDead() && a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+            a.setIsDead(true);
+         } else if(marioCanMove("down") && !b.getIsDead() && a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x) {
             b.setIsDead(true);
             a.setJumping(true);
-            a.setJumpingTimer(20);
-         } else if(a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x) {
-            a.setIsDead(true);
+            a.setJumpingTimer(40);
          }
       }
    }
@@ -157,6 +157,9 @@ public class Main extends JComponent implements ActionListener {
       boolean canMove = true;
       for(int i = 0; i < blocks.length; i ++) {
          Block b = blocks[i];
+         if(Math.abs(mario.getPos().x - a.getPos().x) > 500) {
+            canMove = false;
+         }
          if(dir == "right" && (a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
             canMove = false;
          } else if(dir == "left" && (a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y + a.getSize().y > b.getPos().y && a.getPos().y < b.getPos().y + b.getSize().y)) {
@@ -207,7 +210,7 @@ public class Main extends JComponent implements ActionListener {
          "--------------------------------------------------------------------------------------------------x-------------xx--x-----------------------------xxxxxx--------------bbb-----------------",
          "----------------?-b?b?b---------------b?b--------------b-----b?----?--?--?-----b----------bb-----xx--xx--------xxx--xx---------bb?b--------------xxxxxxx-------------bbbbb-------",
          "------------------------------------------------------------------------------------------------xxx--xxx------xxxx--xxx-------------------------xxxxxxxx-------------bbbbb",
-         "---@-b--o--------------------------------------------------------------------------------------xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
+         "---@-b--o---o---o----------------------o--------------o-----o-o--------------o--------o---o----xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
          "gggggggggggggggggggggggggggggg--ggggggggggggggg---gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
          },
          
