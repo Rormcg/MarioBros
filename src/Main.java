@@ -18,6 +18,7 @@ public class Main extends JComponent implements ActionListener {
    
    private Mario mario = new Mario(80, 80);
    private Block blocks[] = new Block[0];
+   private Goomba goombas[] = new Goomba[0];
    private Background background = new Background();
    
    
@@ -52,6 +53,9 @@ public class Main extends JComponent implements ActionListener {
       for(int i = 0; i < blocks.length; i++) {
          blocks[i].draw(g);
       }
+      for(int i = 0; i < goombas.length; i ++) {
+         goombas[i].draw(g);
+      }
    }
    
    public void actionPerformed(ActionEvent e) {
@@ -62,7 +66,14 @@ public class Main extends JComponent implements ActionListener {
          for(int i = 0; i < blocks.length; i ++) {
             blocks[i].setPos(blocks[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), blocks[i].getPos().y);
          }
+         for(int i = 0; i < goombas.length; i ++) {
+            goombas[i].setPos(goombas[i].getPos().x - (-screenWidth + 250 + mario.getPos().x), goombas[i].getPos().y);
+         }
          mario.setPos(screenWidth - 250, mario.getPos().y);
+      }
+      
+      for(int i = 0; i < goombas.length; i ++) {
+         goombas[i].update(goombaCanMove("down", goombas[i]), goombaCanMove("left", goombas[i]), goombaCanMove("right", goombas[i]));
       }
       
       
@@ -138,15 +149,6 @@ public class Main extends JComponent implements ActionListener {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
          }
-         
-         else if(a.getPos().x + a.getSize().x > screenWidth) {
-            a.setPos(screenWidth - a.getSize().x, a.getPos().y);
-            canMove = false;
-         } else if(a.getPos().x < 0) {
-            a.setPos(0, a.getPos().y);
-            canMove = false;
-         }
-         
       }
       
       return canMove;
@@ -158,6 +160,7 @@ public class Main extends JComponent implements ActionListener {
       b = bricks
       x = stone blocks
       ? = question blocks
+      o = goomba
       @ = mario
       */
       
@@ -173,7 +176,7 @@ public class Main extends JComponent implements ActionListener {
          "--------------------------------------------------------------------------------------------------x-------------xx--x-----------------------------xxxxxx--------------bbb-----------------",
          "----------------?-b?b?b---------------b?b--------------b-----b?----?--?--?-----b----------bb-----xx--xx--------xxx--xx---------bb?b--------------xxxxxxx-------------bbbbb-------",
          "------------------------------------------------------------------------------------------------xxx--xxx------xxxx--xxx-------------------------xxxxxxxx-------------bbbbb",
-         "---@-------------------------------------------------------------------------------------------xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
+         "---@-b--o--------------------------------------------------------------------------------------xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
          "gggggggggggggggggggggggggggggg--ggggggggggggggg---gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
          },
          
@@ -224,6 +227,9 @@ public class Main extends JComponent implements ActionListener {
                case '?':
                   addToBlocks(new Block(c * 48, 26 + r * 48, "question"));
                   break;
+               case 'o':
+                  addToGoombas(new Goomba(c * 48, 26 + r * 48));
+                  break;
                case '@':
                   mario = new Mario(c * 48, 26 + r * 48);
                   frame.addKeyListener(mario);
@@ -241,6 +247,15 @@ public class Main extends JComponent implements ActionListener {
       }
       a[a.length - 1] = addElement;
       blocks = a;
+   }
+   
+   public void addToGoombas(Goomba addElement) {
+      Goomba[] a = new Goomba[goombas.length + 1];
+      for(int i = 0; i < a.length - 1; i ++) {
+         a[i] = goombas[i];
+      }
+      a[a.length - 1] = addElement;
+      goombas = a;
    }
 }
 

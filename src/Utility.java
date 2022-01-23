@@ -228,59 +228,53 @@ public class Utility {
          "plllllllllllllol",
          "lllllllllllllllo"};
          
-      String[] Goomba1 = {
-         "------oooo------"
-         "-----oooooo-----"
-         "----oooooooo----"
-         "---olloooollo---"
-         "--oouluoouluoo--"
-         "-ooouluoouluooo-"
-         "-ooouuuoouuuooo-"
-         "oooooooooooooooo"
-         "-oooouuuuuuoooo-"
-         "----uuuuuuuu----"
-         "----uuuuuuuu----"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"};
+      String[] goomba1 = {
+         "------oooo------",
+         "-----oooooo-----",
+         "----oooooooo----",
+         "---olloooollo---",
+         "--oouluoouluoo--",
+         "-ooouluoouluooo-",
+         "-ooouuuoouuuooo-",
+         "oooooooooooooooo",
+         "-oooouuuuuuoooo-",
+         "----uuuuuuuu----",
+         "----uuuuuuuull--",
+         "---lluuuuulllll-",
+         "---llluuullllll-",
+         "----lllu-lllll--"};
          
-      String[] Goomba2 = {
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"};
+      String[] goomba2 = {
+         "------oooo------",
+         "-----oooooo-----",
+         "----oooooooo----",
+         "---olloooollo---",
+         "--oouluoouluoo--",
+         "-ooouluoouluooo-",
+         "-ooouuuoouuuooo-",
+         "oooooooooooooooo",
+         "-oooouuuuuuoooo-",
+         "----uuuuuuuu----",
+         "--lluuuuuuuull--",
+         "-llllluuuulllll-",
+         "-lllllluullllll-",
+         "--llllluulllll--"};
          
-      String[] Goomba3 = {
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"
-         "----------------"};
+      String[] goomba3 = {
+         "------oooo------",
+         "-----oooooo-----",
+         "----oooooooo----",
+         "---olloooollo---",
+         "--oouluoouluoo--",
+         "-ooouluoouluooo-",
+         "-ooouuuoouuuooo-",
+         "oooooooooooooooo",
+         "-oooouuuuuuoooo-",
+         "----uuuuuuuu----",
+         "--lluuuuuuuu----",
+         "-llllluuuuuull---",
+         "-lllllluuulll---",
+         "--llllluulll--"};
          
       
       String[] image = marioStillA;
@@ -308,6 +302,12 @@ public class Utility {
          image = question;
       } else if(type == "ground") {
          image = ground;
+      } else if(type == "goomba1") {
+         image = goomba1;
+      } else if(type == "goomba2") {
+         image = goomba2;
+      } else if(type == "goomba3") {
+         image = goomba3;
       }
       
       for(int r = 0; r < image.length; r ++) {
