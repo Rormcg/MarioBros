@@ -8,7 +8,7 @@ public class GameOver {
    
    public void draw(Graphics g) {
       g.setColor(Color.BLACK);
-      g.fillRect(0, 0, 600, 600);
+      g.fillRect(0, 0, 650, 650);
       Utility.drawImage(275, 275 - timer, 3, "marioDies", g);
       g.setColor(Color.ORANGE);
       g.setFont(new Font("Sans-serif", Font.BOLD, 34));
