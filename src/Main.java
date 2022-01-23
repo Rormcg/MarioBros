@@ -20,7 +20,8 @@ public class Main extends JComponent implements ActionListener {
    private Block blocks[] = new Block[0];
    private Goomba goombas[] = new Goomba[0];
    private Background background = new Background();
-   
+   private GameOver gameOver = new GameOver();
+   private GoalFlag goalFlag;
    
    
    Main() {
@@ -76,7 +77,7 @@ public class Main extends JComponent implements ActionListener {
          goombas[i].update(goombaCanMove("down", goombas[i]), goombaCanMove("left", goombas[i]), goombaCanMove("right", goombas[i]));
       }
       
-      checkForMarioHit();
+      //checkForMarioHit();
       
       repaint();
    }
@@ -193,6 +194,11 @@ public class Main extends JComponent implements ActionListener {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
          }
+         
+         else if(dir == "right" && mario.getPos().x + mario.getSize().x >= goalFlag.getXPos()) {
+            mario.setPos(goalFlag.getXPos() - mario.getSize().x, mario.getPos().y);
+            canMove = false;
+         }
       }
       
       return canMove;
@@ -204,6 +210,7 @@ public class Main extends JComponent implements ActionListener {
       b = bricks
       x = stone blocks
       ? = question blocks
+      ! = goal flag
       o = goomba
       @ = mario
       */
@@ -219,7 +226,7 @@ public class Main extends JComponent implements ActionListener {
          "---------------------------------------------------------------------------------------------------------------------------------------------------xxxxx--------------bbb----------------------",
          "--------------------------------------------------------------------------------------------------x-------------xx--x-----------------------------xxxxxx--------------bbb-----------------",
          "----------------?-b?b?b---------------b?b--------------b-----b?----?--?--?-----b----------bb-----xx--xx--------xxx--xx---------bb?b--------------xxxxxxx-------------bbbbb-------",
-         "------------------------------------------------------------------------------------------------xxx--xxx------xxxx--xxx-------------------------xxxxxxxx-------------bbbbb",
+         "------------------------------------------------------------------------------------------------xxx--xxx------xxxx--xxx-------------------------xxxxxxxx---------!---bbbbb",
          "---@-b--o---o---o----------------------o--------------o-----o-o--------------o--------o---o----xxxx--xxxx----xxxxx--xxxx-----------------------xxxxxxxxx---------x---bbbbb",
          "gggggggggggggggggggggggggggggg--ggggggggggggggg---gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
          },
@@ -261,6 +268,9 @@ public class Main extends JComponent implements ActionListener {
             switch(levels[level - 1][r].charAt(c)) {
                case 'b':
                   addToBlocks(new Block(c * 48, 26 + r * 48, "brick"));
+                  break;
+               case '!':
+                  goalFlag = new GoalFlag(c * 48 + 24);;
                   break;
                case 'g':
                   addToBlocks(new Block(c * 48, 26 + r * 48, "ground"));
