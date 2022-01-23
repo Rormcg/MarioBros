@@ -117,8 +117,16 @@ public class Mario implements KeyListener {
       return size;
    }
    
+   public boolean getIsDead() {
+      return isDead;
+   }
+   
    public void setJumping(boolean a) {
       jumping = a;
+   }
+   
+   public void setSize(double x, double y) {
+      size = new Point2D.Double(x, y);
    }
    
    public void setJumpingTimer(int a) {

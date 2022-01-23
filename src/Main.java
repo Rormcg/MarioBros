@@ -127,30 +127,34 @@ public class Main extends JComponent implements ActionListener {
       Mario a = mario;
       for(int i = 0; i < goombas.length; i ++) {
          Goomba b = goombas[i];
-         if(!b.getIsDead() && a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
-            a.setIsDead(true);
-         } else if(!b.getIsDead() && a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(!b.getIsDead() && a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(marioCanMove("down") && !b.getIsDead() && a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
-            b.setIsDead(true);
-            a.setJumping(true);
-            a.setJumpingTimer(40);
-         }
-         
-         else if(!b.getIsDead() && a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
-           a.setIsDead(true);
-         } else if(!b.getIsDead() && a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(!b.getIsDead() && a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
-            a.setIsDead(true);
-         } else if(marioCanMove("down") && !b.getIsDead() && a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x) {
-            b.setIsDead(true);
-            a.setJumping(true);
-            a.setJumpingTimer(40);
+         a.setSize(42, a.getSize().y);
+         if(!a.getIsDead() && !b.getIsDead()) {
+            if(a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+               a.setIsDead(true);
+            } else if(a.getPos().x + a.getSize().x == b.getPos().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+               a.setIsDead(true);
+            } else if(a.getPos().x == b.getPos().x + b.getSize().x && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+               a.setIsDead(true);
+            } else if(marioCanMove("down") && a.getPos().y + a.getSize().y >= b.getPos().y && a.getPos().y + a.getSize().y <= b.getPos().y + b.getPos().y * 0.1 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+               b.setIsDead(true);
+               a.setJumping(true);
+               a.setJumpingTimer(40);
+            }
+            
+            else if(a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x) {
+              a.setIsDead(true);
+            } else if(a.getPos().x + a.getSize().x == b.getPos().x + 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+               a.setIsDead(true);
+            } else if(a.getPos().x == b.getPos().x + b.getSize().x - 2 && a.getPos().y > b.getPos().y - b.getSize().y && a.getPos().y < b.getPos().y + b.getSize().y) {
+               a.setIsDead(true);
+            } else if(marioCanMove("down") && a.getPos().y + a.getSize().y >= b.getPos().y && a.getPos().y + a.getSize().y <= b.getPos().y + b.getPos().y * 0.1 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x) {
+               b.setIsDead(true);
+               a.setJumping(true);
+               a.setJumpingTimer(40);
+            }
          }
       }
+      a.setSize(48, a.getSize().y);
    }
    
    public boolean goombaCanMove(String dir, Goomba a) {
