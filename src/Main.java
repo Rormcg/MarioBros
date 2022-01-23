@@ -92,6 +92,9 @@ public class Main extends JComponent implements ActionListener {
             canMove = false;
          } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
+            if(b.getType() == "questionA") {
+               b.setType("questionB");
+            }
          } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
          }
@@ -105,6 +108,9 @@ public class Main extends JComponent implements ActionListener {
          } else if(dir == "up" && (a.getPos().y == b.getPos().y + b.getSize().y - 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x > b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y + b.getSize().y);
+            if(b.getType() == "questionA") {
+               b.setType("questionB");
+            }
          } else if(dir == "down" && (a.getPos().y + a.getSize().y == b.getPos().y + 2 && a.getPos().x < b.getPos().x + b.getSize().x && a.getPos().x + a.getSize().x >= b.getPos().x)) {
             canMove = false;
             a.setPos(a.getPos().x, b.getPos().y - a.getSize().y);
@@ -263,7 +269,7 @@ public class Main extends JComponent implements ActionListener {
                   addToBlocks(new Block(c * 48, 26 + r * 48, "block"));
                   break;
                case '?':
-                  addToBlocks(new Block(c * 48, 26 + r * 48, "question"));
+                  addToBlocks(new Block(c * 48, 26 + r * 48, "questionA"));
                   break;
                case 'o':
                   addToGoombas(new Goomba(c * 48, 26 + r * 48));
